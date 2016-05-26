@@ -16,5 +16,6 @@
  *= require metisMenu.min.css
  *= require sb-admin-2.css
  *= require timeline.css
+ *= require dataTables.bootstrap.min.css
  *= require_self
  */

@@ -15,4 +15,6 @@
 //= require bootstrap.min
 //= require metisMenu.min
 //= require sb-admin-2
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap.min
 //= require_tree .
