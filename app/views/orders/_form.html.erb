@@ -1,0 +1,44 @@
+<div class="col-lg-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Form Order <%= link_to 'Back', orders_path, class:"btn btn-default" %>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <%= form_for(@order) do |f| %>
+          <% if @order.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+            <ul>
+              <% @order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <div class="field">
+            <%= f.label :table %><br>
+            <%= f.number_field :table %>
+          </div>
+          <div class="field">
+            <div class="order_items">
+              <%= f.fields_for :order_items do |order_item| %>
+              <%= render 'order_item_fields', f: order_item %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association 'add order item',f,:order_items %>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+          <% end %>
+        </div>
+        <div class="col-lg-6">
+          Guide goes here
+        </div>
+      </div>
+    </div>
+  </div>

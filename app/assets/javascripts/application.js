@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require cocoon
 //= require bootstrap.min
 //= require metisMenu.min
 //= require sb-admin-2

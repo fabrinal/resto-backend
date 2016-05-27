@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :menu_id %>
+    <%= f.select :menu_id, options_from_collection_for_select(@menus,"id","name",1) %> |
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, min: 0 %> | <%= link_to_remove_association "remove menu", f %>
+  </div>
+</div>
