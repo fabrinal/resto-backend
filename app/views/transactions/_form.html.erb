@@ -1,39 +1,55 @@
-<%= form_for(@transaction) do |f| %>
-  <% if @transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+<div class="col-lg-12">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        Form Transaction <%= link_to 'Back', transactions_path, class:"btn btn-default" %>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-lg-6">
+            <%= form_for(@transaction) do |f| %>
+              <% if @transaction.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
 
-      <ul>
-      <% @transaction.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                  <ul>
+                  <% @transaction.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <% if @orders.respond_to? :map %>
+                <div class="field">
+                  <%= f.label :order_id %><br>
+                  <%= f.select :order_id, options_from_collection_for_select(@orders,"id","table"), prompt: "Select Table Number" %>
+                </div>
+              <% end %>
+              <div id="total_price"></div>
+              <div class="field">
+                <%= f.label :paid_amount %><br>
+                <%= f.text_field :paid_amount %>
+              </div>
+              <div class="field">
+                <%= f.label :discount %><br>
+                <%= f.text_field :discount %>
+              </div>
+              <div class="field">
+                <%= f.label :validation_id %><br>
+                <%= f.text_field :validation_id %>
+              </div>
+              <div class="field">
+                <%= f.label :status %><br>
+                <%= f.text_field :status %>
+              </div>
+              <div class="actions">
+                <%= f.submit %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-lg-6">
+            Guide Goes here
+          </div>
+      </div>
     </div>
-  <% end %>
-  <% if @orders.respond_to? :map %>
-    <div class="field">
-      <%= f.label :order_id %><br>
-      <%= f.select :order_id, options_from_collection_for_select(@orders,"id","table"), prompt: "Select Table Number" %>
-    </div>
-  <% end %>
-  <div id="total_price"></div>
-  <div class="field">
-    <%= f.label :paid_amount %><br>
-    <%= f.text_field :paid_amount %>
   </div>
-  <div class="field">
-    <%= f.label :discount %><br>
-    <%= f.text_field :discount %>
-  </div>
-  <div class="field">
-    <%= f.label :validation_id %><br>
-    <%= f.text_field :validation_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
