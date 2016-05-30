@@ -27,6 +27,9 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.order_items.each do |order_item|
+      order_item.order_price = order_item.menu.price
+    end
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
