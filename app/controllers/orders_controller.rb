@@ -10,6 +10,17 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    respond_to do |format|
+      format.html {render :show}
+      format.json do
+        order = {
+          id: @order.id,
+          table_id: @order.table,
+          total_price: @order.get_total_price
+        }
+        render json: order
+      end
+    end
   end
 
   # GET /orders/new
