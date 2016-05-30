@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :order_items, autosave: true, dependent: :destroy
+  has_one :payment, foreign_key: "order_id", class_name: "Transaction"
   accepts_nested_attributes_for :order_items, reject_if: :all_blank, allow_destroy: true
 
   def get_total_price

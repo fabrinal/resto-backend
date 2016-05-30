@@ -10,11 +10,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :order_id %><br>
-    <%= f.select :order_id, options_from_collection_for_select(@orders,"id","table") %>
-  </div>
+  <% if @orders.respond_to? :map %>
+    <div class="field">
+      <%= f.label :order_id %><br>
+      <%= f.select :order_id, options_from_collection_for_select(@orders,"id","table"), prompt: "Select Table Number" %>
+    </div>
+  <% end %>
   <div id="total_price"></div>
   <div class="field">
     <%= f.label :paid_amount %><br>

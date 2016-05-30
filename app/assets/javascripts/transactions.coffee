@@ -5,4 +5,5 @@ $(document).ready( () ->
       $("#total_price").text(result.total_price)
     )
   )
+
 )

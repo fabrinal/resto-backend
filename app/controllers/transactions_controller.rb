@@ -21,13 +21,14 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
+    @orders = Order.find(@transaction.order.id)
   end
 
   # POST /transactions
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-
+    @transaction.order.paid = true
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
